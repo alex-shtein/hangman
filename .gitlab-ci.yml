@@ -1,0 +1,39 @@
+include:
+  - local: "deploy/app-python/gitlab-ci.yml"
+    rules:
+      - if: $P_LANG == "python"  || $P_LANG == "" || $P_LANG == null
+
+variables:
+  P_LANG: "python" # Default value, may be overridden via GitLab CI/CD UI
+
+stages:
+  - pre
+  - acceptance
+  - build
+  - validate
+
+show_variables:
+  stage: pre
+  script:
+    - printenv | sort
+
+.acceptance_test:
+  stage: acceptance
+  variables:
+    DOCKER_HOST: tcp://docker:2376
+    DOCKER_TLS_CERTDIR: "/certs"
+    DOCKER_TLS_VERIFY: 1
+    DOCKER_CERT_PATH: "$DOCKER_TLS_CERTDIR/client"
+  image: docker
+  tags:
+    - dind
+  services:
+    - name: docker:dind
+      alias: docker
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_BRANCH == "master"
+      when: always
+      allow_failure: false
+    - when: never
+  script:
+    - sh scripts/run_acceptance_tests.sh $CI_PROJECT_NAME $DOCKERFILE
