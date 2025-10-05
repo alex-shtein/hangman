@@ -1,9 +1,9 @@
 [tool.poetry]
-name = "backend-academy-2025-python-template-hw1"
+name = "hw1-hangman"
 version = "0.1.0"
 description = ""
 package-mode = false
-authors = ["n.beskodarov <n.beskodarov@tinkoff.ru>", "g.tarasov <g.tarasov@tbank.ru>"]
+authors = ["alex-shtein <ash.shtein@yandex.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
@@ -24,3 +24,8 @@ pytest-asyncio = "*"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "pre-commit (>=4.3.0,<5.0.0)"
+]
