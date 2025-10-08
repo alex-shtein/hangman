@@ -2,10 +2,10 @@ from __future__ import annotations
 
 import curses
 
-from core.ui.widgets import ConfirmButtons, Label
+from core.ui.widgets import ConfirmButtons
+from core.ui.widgets import Label
 
 
-# ConfirmExitState — универсальный диалог подтверждения.
 class ConfirmExitState:
     def __init__(self, ctx, stack, title: str | None = None, on_yes=None):
         self.ctx = ctx
@@ -14,8 +14,11 @@ class ConfirmExitState:
         self.buttons = ConfirmButtons(["Да", "Нет"])
         self.on_yes = on_yes
 
-    def on_push(self, stack): ...
-    def on_pop(self): ...
+    def on_push(self, stack):
+        pass
+
+    def on_pop(self):
+        pass
 
     def handle_input(self, key) -> None:
         if key in (curses.KEY_LEFT, "h", "H"):

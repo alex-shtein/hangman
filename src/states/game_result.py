@@ -2,7 +2,8 @@ from __future__ import annotations
 
 import curses
 
-from core.ui.widgets import ConfirmButtons, Label
+from core.ui.widgets import ConfirmButtons
+from core.ui.widgets import Label
 
 
 class GameResultState:
@@ -26,8 +27,11 @@ class GameResultState:
         self.title = Label("РЕЗУЛЬТАТ РАУНДА", bold=True)
         self.buttons = ConfirmButtons(["Да", "Нет"])
 
-    def on_push(self, stack): ...
-    def on_pop(self): ...
+    def on_push(self, stack):
+        pass
+
+    def on_pop(self):
+        pass
 
     def handle_input(self, key: int) -> None:
         if key in (curses.KEY_ENTER, 10, 13, "\n"):

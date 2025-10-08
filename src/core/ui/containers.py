@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import curses
-from typing import List, Optional, Tuple
+from typing import List
+from typing import Optional
+from typing import Tuple
 
 
 class Widget:

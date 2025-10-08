@@ -3,10 +3,10 @@ from __future__ import annotations
 import curses
 
 from core.models import DIFFICULTIES
-from core.ui.widgets import Label, OptionsList
+from core.ui.widgets import Label
+from core.ui.widgets import OptionsList
 
 
-# SettingsState — экран настроек
 class SettingsState:
     def __init__(self, ctx, stack):
         self.ctx = ctx
@@ -38,9 +38,11 @@ class SettingsState:
             "↑/↓ — выбрать, ←/→ — изменить, Enter/Esc — сохранить и назад"
         )
 
-    def on_push(self, stack): ...
+    def on_push(self, stack):
+        pass
 
-    def on_pop(self): ...
+    def on_pop(self):
+        pass
 
     def handle_input(self, key: int) -> None:
         if key in (curses.KEY_UP, "w"):
@@ -66,7 +68,8 @@ class SettingsState:
             self.ctx.save_settings()
             self.stack.pop()
 
-    def update(self, dt: float) -> None: ...
+    def update(self, dt: float) -> None:
+        pass
 
     def draw(self) -> None:
         stdscr = self.ctx.stdscr

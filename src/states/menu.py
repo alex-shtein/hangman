@@ -3,7 +3,8 @@ from __future__ import annotations
 import curses
 
 from core.stack import StateStack
-from core.ui.widgets import Label, VerticalMenu
+from core.ui.widgets import Label
+from core.ui.widgets import VerticalMenu
 from states.confirm_exit import ConfirmExitState
 from states.game_round import GameRoundState
 
@@ -17,8 +18,11 @@ class MenuState:
         self.flash_msg = ""
         self.flash_timer = 0.0
 
-    def on_push(self, stack: StateStack) -> None: ...
-    def on_pop(self) -> None: ...
+    def on_push(self, stack: StateStack) -> None:
+        pass
+
+    def on_pop(self) -> None:
+        pass
 
     def _open_settings(self):
         from states.settings import SettingsState

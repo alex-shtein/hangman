@@ -7,7 +7,9 @@ import locale
 import os
 from typing import List
 
-from core.models import DIFFICULTIES, Settings, Stats
+from core.models import DIFFICULTIES
+from core.models import Settings
+from core.models import Stats
 from core.stack import StateStack
 from states.menu import MenuState
 

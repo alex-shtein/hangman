@@ -1,7 +1,8 @@
 from __future__ import annotations
 
 import curses
-from typing import List, Tuple
+from typing import List
+from typing import Tuple
 
 from .containers import Widget
 

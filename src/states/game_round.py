@@ -4,14 +4,15 @@ import curses
 import glob
 import os
 import random
-from typing import Callable, Set
+from typing import Callable
+from typing import Set
 
 from core.models import DIFFICULTIES
 from core.stack import StateStack
 from core.ui.widgets import Label
 from states.game_result import GameResultState
 
-# попытки по сложности
+# Попытки по сложности
 ATTEMPTS_BY_DIFF = {
     "Лёгкая": 8,
     "Средняя": 6,
@@ -24,7 +25,6 @@ HINTS_BY_DIFF = {
     "Сложная": 0,
 }
 
-# ASCII стадии виселицы (индекс = число ошибок)
 GALLOWS = [
     [" ┌───────┐", " │       │", " │       ", " │       ", " │       ", "─┴─      "],
     [" ┌───────┐", " │       │", " │       O", " │       ", " │       ", "─┴─      "],
@@ -143,8 +143,11 @@ class GameRoundState:
             return random.choice([d for d in DIFFICULTIES if d != "Случайная"])
         return diff
 
-    def on_push(self, stack: StateStack) -> None: ...
-    def on_pop(self) -> None: ...
+    def on_push(self, stack: StateStack) -> None:
+        pass
+
+    def on_pop(self) -> None:
+        pass
 
     def _flash(self, text: str, t: float = 1.2) -> None:
         self.flash_msg, self.flash_timer = text, t

@@ -1,15 +1,26 @@
 from __future__ import annotations
 
 import time
-from typing import List, Optional, Protocol
+from typing import List
+from typing import Optional
+from typing import Protocol
 
 
 class State(Protocol):
-    def on_push(self, stack: "StateStack") -> None: ...
-    def on_pop(self) -> None: ...
-    def handle_input(self, key: int) -> None: ...
-    def update(self, dt: float) -> None: ...
-    def draw(self) -> None: ...
+    def on_push(self, stack: "StateStack") -> None:
+        pass
+
+    def on_pop(self) -> None:
+        pass
+
+    def handle_input(self, key: int) -> None:
+        pass
+
+    def update(self, dt: float) -> None:
+        pass
+
+    def draw(self) -> None:
+        pass
 
 
 class StateStack:

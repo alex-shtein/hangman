@@ -5,15 +5,17 @@ import curses
 from core.ui.widgets import Label
 
 
-# StatisticState — экран статистики
 class StatisticState:
     def __init__(self, ctx, stack):
         self.ctx = ctx
         self.stack = stack
         self.title = Label("СТАТИСТИКА", bold=True)
 
-    def on_push(self, stack): ...
-    def on_pop(self): ...
+    def on_push(self, stack):
+        pass
+
+    def on_pop(self):
+        pass
 
     def handle_input(self, key: int) -> None:
         if key in (27, "й", "\x1b", "\n", curses.KEY_ENTER, 10, 13):
